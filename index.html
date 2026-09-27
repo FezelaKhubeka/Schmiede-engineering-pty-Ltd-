@@ -196,8 +196,8 @@
       }
 
       .logo-mark {
-        width: 48px;
-        height: 48px;
+        width: 52px;
+        height: 52px;
         display: grid;
         place-items: center;
         background: linear-gradient(135deg, var(--steel) 0%, var(--charcoal) 100%);
@@ -207,6 +207,14 @@
         transform: skew(-10deg);
         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
         border: 1px solid rgba(184, 149, 106, 0.3);
+        overflow: hidden;
+      }
+
+      .logo-mark img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transform: skew(10deg);
       }
 
       .logo-text strong {
@@ -852,6 +860,41 @@
         transform: translateX(4px);
       }
 
+      /* Phone Contact */
+      .phone-contact {
+        display: grid;
+        gap: 12px;
+      }
+
+      .phone-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .phone-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 40px;
+        padding: 0 18px;
+        background: var(--ink);
+        color: var(--white);
+        border: 2px solid var(--ink);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .phone-button:hover {
+        background: var(--white);
+        color: var(--ink);
+        transform: translateX(2px);
+      }
+
       /* Quote */
       .quote-wrapper {
         background: linear-gradient(135deg, var(--gold) 0%, #a67f52 100%);
@@ -897,16 +940,21 @@
 
       .contact-details {
         display: grid;
-        gap: 8px;
+        gap: 16px;
         margin-top: 32px;
-        font-weight: 800;
-        font-size: 15px;
+      }
+
+      .contact-details > div {
+        display: grid;
+        gap: 8px;
       }
 
       .contact-details a,
       .contact-details span {
         display: inline-block;
         letter-spacing: 0.3px;
+        font-weight: 800;
+        font-size: 15px;
       }
 
       .contact-details a {
@@ -966,9 +1014,21 @@
         box-shadow: 0 0 0 4px rgba(125, 107, 84, 0.15);
       }
 
+      .field input[type="file"] {
+        padding: 12px;
+        cursor: pointer;
+        background: #faf8f5;
+      }
+
       .field textarea {
         min-height: 140px;
         resize: vertical;
+      }
+
+      .upload-help {
+        color: #777;
+        font-size: 12px;
+        line-height: 1.5;
       }
 
       .form-note {
@@ -1550,13 +1610,31 @@
             </p>
 
             <div class="contact-details">
-              <a href="tel:+27123456789">+27 (0) 12 345 6789</a>
-              <a href="mailto:info@schmiedeengineering.co.za">info@schmiedeengineering.co.za</a>
+              <div>
+                <a href="tel:+27123456789">+27 (0) 12 345 6789</a>
+                <div class="phone-actions">
+                  <a
+                    class="phone-button"
+                    href="tel:+27123456789"
+                    aria-label="Call SCHMIEDE Engineering"
+                  >
+                    Call
+                  </a>
+                  <a
+                    class="phone-button"
+                    href="sms:+27123456789"
+                    aria-label="Send a text message to SCHMIEDE Engineering"
+                  >
+                    Text
+                  </a>
+                </div>
+              </div>
+              <a href="mailto:emmaculatekhulek@gmail.com">emmaculatekhulek@gmail.com</a>
               <span>Pretoria, Gauteng, South Africa</span>
             </div>
           </div>
 
-          <form id="quote-form" class="quote-form" novalidate>
+          <form id="quote-form" class="quote-form" action="/api/quote" method="POST" enctype="multipart/form-data" novalidate>
             <div class="field">
               <label for="name">Full name <span style="color: var(--rust);">*</span></label>
               <input
@@ -1607,6 +1685,20 @@
                 placeholder="Tell us about your fabrication or steel requirement. Include materials, dimensions and expected timeline if possible..."
                 required
               ></textarea>
+            </div>
+
+            <div class="field">
+              <label for="attachments">Drawings or images</label>
+              <input
+                id="attachments"
+                name="attachments"
+                type="file"
+                accept=".pdf,.png,.jpg,.jpeg,.webp,.svg,.dwg,.dxf,.doc,.docx,.zip"
+                multiple
+              />
+              <small class="upload-help">
+                Upload up to 5 files. Maximum 10MB per file.
+              </small>
             </div>
 
             <div class="form-note">
@@ -1686,15 +1778,16 @@
       const statusEl = document.getElementById('form-status');
 
       if (form && statusEl) {
-        form.addEventListener('submit', (event) => {
+        form.addEventListener('submit', async function (event) {
           event.preventDefault();
-          statusEl.textContent = '';
+
+          statusEl.textContent = 'Sending your enquiry...';
+          statusEl.style.color = '#2a2e33';
 
           const name = document.getElementById('name').value.trim();
           const email = document.getElementById('email').value.trim();
           const message = document.getElementById('message').value.trim();
 
-          // Validation
           if (!name || !email || !message) {
             statusEl.textContent = '❌ Please complete all required fields.';
             statusEl.style.color = '#c74545';
@@ -1708,15 +1801,32 @@
             return;
           }
 
-          // Success state
-          statusEl.textContent = `✓ Thank you, ${name}. Your enquiry has been sent successfully. We'll be in touch shortly.`;
-          statusEl.style.color = '#2d7a3a';
+          const formData = new FormData(form);
 
-          // Reset form
-          setTimeout(() => {
-            form.reset();
-            statusEl.textContent = '';
-          }, 2000);
+          try {
+            const response = await fetch('/api/quote', {
+              method: 'POST',
+              body: formData
+            });
+
+            const result = await response.json();
+
+            if (!response.ok || !result.success) {
+              throw new Error(result.message || 'Unable to send your enquiry.');
+            }
+
+            statusEl.textContent = '✓ ' + result.message;
+            statusEl.style.color = '#2d7a3a';
+
+            setTimeout(() => {
+              form.reset();
+              statusEl.textContent = '';
+            }, 2000);
+          } catch (error) {
+            console.error(error);
+            statusEl.textContent = '❌ ' + (error.message || 'Something went wrong. Please try again.');
+            statusEl.style.color = '#c74545';
+          }
         });
       }
     </script>
