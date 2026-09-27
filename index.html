@@ -5,26 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="SCHMIEDE Engineering (Pty) Ltd provides precision metal fabrication, laser cutting, sheet metal work and engineered steel solutions across South Africa."
+      content="SCHMIEDE Engineering (Pty) Ltd — Custom metal fabrication, laser-cut components and engineered steel products."
     />
     <meta
       name="keywords"
-      content="SCHMIEDE Engineering, metal fabrication, sheet metal, laser cutting, steel fabrication, Pretoria, Gauteng, engineering solutions"
+      content="SCHMIEDE Engineering, custom metal fabrication, sheet metal, laser cutting, steel fabrication, Pretoria, Gauteng"
     />
     <meta name="author" content="SCHMIEDE Engineering (Pty) Ltd" />
+    <meta name="theme-color" content="#111214" />
     <title>SCHMIEDE Engineering | Built to Conquer</title>
+
     <style>
       :root {
         --bg: #f3f2ee;
-        --panel: #f9f7f3;
+        --bg-soft: #e7e2d7;
+        --panel: #f9f7f2;
         --ink: #111214;
-        --muted: #5c5c5c;
-        --line: #d8d3ca;
+        --muted: #555555;
+        --line: #d9d3ca;
         --gold: #c7a35d;
         --gold-deep: #927235;
-        --charcoal: #15191b;
-        --charcoal-2: #1d2327;
-        --soft: #e7e2d7;
+        --charcoal: #111416;
         --white: #ffffff;
       }
 
@@ -42,16 +43,17 @@
         background: var(--bg);
         color: var(--ink);
         line-height: 1.6;
-      }
-
-      img {
-        max-width: 100%;
-        display: block;
+        overflow-x: hidden;
       }
 
       a {
-        text-decoration: none;
         color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
       }
 
       button,
@@ -79,7 +81,7 @@
         align-items: center;
         justify-content: center;
         min-height: 52px;
-        padding: 0 26px;
+        padding: 0 24px;
         border: 1px solid var(--ink);
         font-size: 13px;
         font-weight: 700;
@@ -93,7 +95,7 @@
       }
 
       .btn-primary:hover {
-        background: #2a2d2f;
+        background: #2c2f31;
       }
 
       .btn-secondary {
@@ -112,7 +114,7 @@
 
       .section-header {
         max-width: 760px;
-        margin-bottom: 42px;
+        margin-bottom: 46px;
       }
 
       .section-header h2 {
@@ -120,12 +122,6 @@
         font-size: clamp(38px, 4vw, 64px);
         line-height: 0.96;
         letter-spacing: -3px;
-      }
-
-      .section-header p {
-        margin-top: 18px;
-        color: var(--muted);
-        font-size: 18px;
       }
 
       /* Header */
@@ -186,7 +182,6 @@
       nav a {
         font-size: 13px;
         font-weight: 700;
-        color: var(--ink);
         transition: color 0.25s ease;
       }
 
@@ -216,8 +211,8 @@
       /* Hero */
       .hero {
         background:
-          radial-gradient(circle at top left, rgba(199, 163, 93, 0.18), transparent 32%),
-          linear-gradient(180deg, #eae6df 0%, #e1ddd4 100%);
+          radial-gradient(circle at top left, rgba(199, 163, 93, 0.18), transparent 35%),
+          linear-gradient(180deg, #ece7df 0%, #e3ded4 100%);
       }
 
       .hero-wrap {
@@ -255,8 +250,8 @@
       .hero-meta {
         display: flex;
         flex-wrap: wrap;
-        gap: 24px;
-        margin-top: 32px;
+        gap: 18px 24px;
+        margin-top: 30px;
         color: #595959;
         font-size: 11px;
         font-weight: 700;
@@ -309,15 +304,8 @@
         text-transform: uppercase;
       }
 
-      .metal-card .label {
-        top: 24px;
-        left: 24px;
-      }
-
-      .metal-card .caption {
-        bottom: 24px;
-        right: 24px;
-      }
+      .metal-card .label { top: 24px; left: 24px; }
+      .metal-card .caption { bottom: 24px; right: 24px; }
 
       .spec {
         position: absolute;
@@ -337,15 +325,8 @@
         text-transform: uppercase;
       }
 
-      .spec-one {
-        top: 10%;
-        right: -8px;
-      }
-
-      .spec-two {
-        bottom: 11%;
-        left: -10px;
-      }
+      .spec-one { top: 10%; right: -8px; }
+      .spec-two { bottom: 11%; left: -10px; }
 
       .brand-strip {
         background: var(--ink);
@@ -416,6 +397,7 @@
       .dark-section {
         background: var(--charcoal);
         color: var(--white);
+        padding: 110px 0;
       }
 
       .product-grid {
@@ -494,6 +476,7 @@
       /* About */
       .about {
         background: #dedbd3;
+        padding: 110px 0;
       }
 
       .about-inner {
@@ -537,14 +520,17 @@
         font-weight: 700;
       }
 
-      /* CTA / Quote */
+      /* Quote */
+      .quote-wrapper {
+        background: var(--gold);
+        padding: 110px 0;
+      }
+
       .quote-wrap {
         display: grid;
         grid-template-columns: 0.8fr 1.2fr;
-        gap: 80px;
         align-items: start;
-        background: var(--gold);
-        padding: 110px 0;
+        gap: 80px;
       }
 
       .quote-copy h2 {
@@ -603,7 +589,7 @@
         box-shadow: 0 0 0 3px rgba(146, 114, 53, 0.12);
       }
 
-      .quote-form .form-note {
+      .form-note {
         margin-top: -4px;
         font-size: 11px;
         color: #5d5d5d;
@@ -666,6 +652,7 @@
         text-transform: uppercase;
       }
 
+      /* Responsive */
       @media (max-width: 850px) {
         .menu-button {
           display: block;
@@ -731,328 +718,4 @@
 
         .hero-meta {
           gap: 14px;
-          letter-spacing: 0.08em;
-        }
-
-        .metal-card {
-          height: 300px;
-        }
-
-        .spec {
-          display: none;
-        }
-
-        .services-grid,
-        .steps,
-        .product-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .section {
-          padding: 82px 0;
-        }
-
-        .quote-form {
-          padding: 22px 18px;
-        }
-
-        .footer-top {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <div class="container header-inner">
-        <a href="#home" class="logo" aria-label="SCHMIEDE home">
-          <span class="logo-mark">S</span>
-          <span class="logo-text">
-            <strong>SCHMIEDE</strong>
-            <small>ENGINEERING (PTY) LTD</small>
-          </span>
-        </a>
-
-        <button id="menuButton" class="menu-button" aria-label="Toggle navigation" aria-expanded="false">
-          ☰
-        </button>
-
-        <nav id="mainNav">
-          <a href="#services">Services</a>
-          <a href="#products">Products</a>
-          <a href="#process">Process</a>
-          <a href="#about">About</a>
-          <a href="#quote" class="nav-cta">Request a Quote</a>
-        </nav>
-      </div>
-    </header>
-
-    <main id="home">
-      <section class="hero">
-        <div class="container hero-wrap">
-          <div class="hero-copy">
-            <p class="eyebrow">Custom Metal Fabrication</p>
-            <h1>
-              Built to<br />
-              <span class="accent">Conquer.</span>
-            </h1>
-            <p class="hero-lead">
-              Precision sheet-metal fabrication and engineered steel solutions built around your drawing, dimensions,
-              prototype, or idea.
-            </p>
-            <div class="hero-actions">
-              <a href="#quote" class="btn btn-primary">Start a Project →</a>
-              <a href="https://wa.me/27662312231?text=Hi%20SCHMIEDE%20Engineering%2C%20I%27d%20like%20to%20request%20a%20quotation." class="btn btn-secondary" target="_blank" rel="noreferrer">WhatsApp Us</a>
-            </div>
-            <div class="hero-meta">
-              <span>Laser Cutting</span>
-              <span>Fabrication</span>
-              <span>Steel Solutions</span>
-            </div>
-          </div>
-
-          <div class="hero-visual" aria-label="Metal fabrication visual">
-            <div class="grid-overlay"></div>
-            <div class="spec spec-one">
-              <strong>Precision</strong>
-              <small>Cut + Form + Finish</small>
-            </div>
-            <div class="metal-card">
-              <div class="label">SCHMIEDE</div>
-              <div class="letter">S</div>
-              <div class="caption">ENGINEERED</div>
-            </div>
-            <div class="spec spec-two">
-              <strong>Fast Lead Times</strong>
-              <small>Built for Industry</small>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="brand-strip">
-        <div class="container brand-strip-inner">
-          <span>Sheet Metal</span>
-          <span>Laser Cutting</span>
-          <span>Structural Steel</span>
-          <span>Fabrication</span>
-          <span>Prototype Work</span>
-        </div>
-      </div>
-
-      <section class="section" id="services">
-        <div class="container">
-          <div class="section-header">
-            <p class="eyebrow">What We Do</p>
-            <h2>Fabrication services built for performance.</h2>
-          </div>
-
-          <div class="services-grid">
-            <article class="service-card">
-              <div class="service-number">01</div>
-              <h3>Sheet Metal Fabrication</h3>
-              <p>From simple brackets to complex assemblies, we produce dependable metalwork designed for real-world application.</p>
-              <span class="arrow">→</span>
-            </article>
-
-            <article class="service-card">
-              <div class="service-number">02</div>
-              <h3>Laser Cutting</h3>
-              <p>Accurate, repeatable cutting for custom components, production runs, and precision-fit parts.</p>
-              <span class="arrow">→</span>
-            </article>
-
-            <article class="service-card">
-              <div class="service-number">03</div>
-              <h3>Steel Solutions</h3>
-              <p>Structural and engineered steel products tailored to industrial, commercial, and custom fabrication requirements.</p>
-              <span class="arrow">→</span>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="dark-section" id="products">
-        <div class="container">
-          <div class="section-header">
-            <p class="eyebrow">Our Work</p>
-            <h2>Built to fit demanding specifications.</h2>
-          </div>
-
-          <div class="product-grid">
-            <article class="product product-large">
-              <div class="product-number">01</div>
-              <h3>Custom Fabricated Components</h3>
-              <p>Purpose-built parts for production, repair, upgrade, and specification-driven applications.</p>
-            </article>
-
-            <article class="product">
-              <div class="product-number">02</div>
-              <h3>Laser Cut Parts</h3>
-              <p>Clean edges and precise geometry for efficient assembly.</p>
-            </article>
-
-            <article class="product">
-              <div class="product-number">03</div>
-              <h3>Steel Assemblies</h3>
-              <p>Reliable structures and engineered pieces for industrial use.</p>
-            </article>
-
-            <article class="product">
-              <div class="product-number">04</div>
-              <h3>Prototype Development</h3>
-              <p>Fast-turn concept work to help you test and refine before full production.</p>
-            </article>
-
-            <article class="product">
-              <div class="product-number">05</div>
-              <h3>Site & Repair Solutions</h3>
-              <p>Practical fabrication support for maintenance, modifications, and replacements.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="process">
-        <div class="container">
-          <div class="section-header">
-            <p class="eyebrow">Our Process</p>
-            <h2>Simple steps. Strong outcomes.</h2>
-          </div>
-
-          <div class="steps">
-            <div class="step">
-              <div class="step-number">01</div>
-              <h3>Consult</h3>
-              <p>We discuss your requirements, application, and material expectations.</p>
-            </div>
-
-            <div class="step">
-              <div class="step-number">02</div>
-              <h3>Design</h3>
-              <p>We review drawings, dimensions, and feasibility to align the solution with your goals.</p>
-            </div>
-
-            <div class="step">
-              <div class="step-number">03</div>
-              <h3>Fabricate</h3>
-              <p>Production is executed with care, precision, and attention to quality control.</p>
-            </div>
-
-            <div class="step">
-              <div class="step-number">04</div>
-              <h3>Deliver</h3>
-              <p>Your finished work is supplied ready for installation, use, or further processing.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="about" id="about">
-        <div class="container about-inner">
-          <div class="about-card">
-            <h3>Built on experience</h3>
-            <p>SCHMIEDE Engineering delivers fabrication and steel solutions shaped by practical industry knowledge, quality-minded workmanship, and a focus on dependable results.</p>
-          </div>
-
-          <div class="about-copy">
-            <p class="eyebrow">About Us</p>
-            <h2>Precision metalwork for demanding projects.</h2>
-            <p>
-              Based in South Africa and serving a wide range of industrial and commercial needs, SCHMIEDE Engineering helps businesses turn concepts,
-              drawings, and production requirements into robust, workable metal solutions.
-            </p>
-            <p>
-              Whether the need is a custom component, a fabrication run, or a production-ready steel assembly, we focus on accuracy, consistency, and practical delivery.
-            </p>
-            <a href="#quote" class="about-link">Discuss your project</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="quote-wrap" id="quote">
-        <div class="container quote-wrap">
-          <div class="quote-copy">
-            <p class="eyebrow" style="color: rgba(17,18,20,0.7);">Start your project</p>
-            <h2>Need a quotation?</h2>
-            <p>Tell us about your requirement and we’ll get back to you with a tailored solution and lead-time guidance.</p>
-
-            <div class="contact-details">
-              <span>📞 +27 66 231 2231</span>
-              <span>📍 Pretoria, Gauteng</span>
-              <span>💬 WhatsApp enquiries available</span>
-            </div>
-          </div>
-
-          <form class="quote-form" onsubmit="event.preventDefault(); this.reset(); alert('Thanks! Your project request has been prepared. Please send the details via WhatsApp or call +27 66 231 2231 for a quotation.');">
-            <div class="field">
-              <label for="name">Full Name</label>
-              <input id="name" name="name" type="text" placeholder="Your name" required />
-            </div>
-
-            <div class="field">
-              <label for="company">Company / Business</label>
-              <input id="company" name="company" type="text" placeholder="Business name" />
-            </div>
-
-            <div class="field">
-              <label for="email">Email Address</label>
-              <input id="email" name="email" type="email" placeholder="you@example.com" required />
-            </div>
-
-            <div class="field">
-              <label for="message">Project Details</label>
-              <textarea id="message" name="message" rows="5" placeholder="Tell us about your drawings, quantities, material, or fabrication requirements..." required></textarea>
-            </div>
-
-            <div class="form-note">We typically respond with pricing guidance, technical discussion, and production timelines.</div>
-
-            <button type="submit" class="btn btn-primary" style="width: fit-content;">Send Request</button>
-          </form>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <div class="container">
-        <div class="footer-top">
-          <div class="footer-brand">
-            <span class="logo-mark">S</span>
-            <div>
-              <strong>SCHMIEDE</strong>
-              <small>Engineering (Pty) Ltd</small>
-            </div>
-          </div>
-
-          <div class="footer-links">
-            <a href="#services">Services</a>
-            <a href="#products">Products</a>
-            <a href="#process">Process</a>
-            <a href="#about">About</a>
-            <a href="#quote">Quote</a>
-          </div>
-        </div>
-
-        <div class="copyright">© 2025 SCHMIEDE Engineering (Pty) Ltd. All rights reserved.</div>
-      </div>
-    </footer>
-
-    <script>
-      const menuButton = document.getElementById('menuButton');
-      const nav = document.getElementById('mainNav');
-
-      menuButton.addEventListener('click', () => {
-        const isOpen = nav.classList.toggle('open');
-        menuButton.setAttribute('aria-expanded', String(isOpen));
-      });
-
-      nav.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', () => {
-          nav.classList.remove('open');
-          menuButton.setAttribute('aria-expanded', 'false');
-        });
-      });
-    </script>
-  </body>
-</html>
+          letter-spacing: 0.08
