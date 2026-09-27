@@ -1,0 +1,9 @@
+PORT=3000
+
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=emmaculatekhulek@gmail.com
+SMTP_PASS=lypejeowqmxkafob
+
+FROM_EMAIL=emmaculatekhulek@gmail.com
+TO_EMAIL=emmaculatekhulek@gmail.com
