@@ -1634,7 +1634,16 @@
             </div>
           </div>
 
-          <form id="quote-form" class="quote-form" action="/api/quote" method="POST" enctype="multipart/form-data" novalidate>
+          <form
+            id="quote-form"
+            class="quote-form"
+            action="https://formspree.io/f/xrpbojow"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <input type="hidden" name="_subject" value="New SCHMIEDE Engineering enquiry">
+            <input type="hidden" name="_replyto" id="form-reply-to">
+
             <div class="field">
               <label for="name">Full name <span style="color: var(--rust);">*</span></label>
               <input
@@ -1773,60 +1782,13 @@
         yearEl.textContent = new Date().getFullYear();
       }
 
-      // Form handling
-      const form = document.getElementById('quote-form');
-      const statusEl = document.getElementById('form-status');
+      // Formspree reply-to field
+      const emailInput = document.getElementById('email');
+      const replyToInput = document.getElementById('form-reply-to');
 
-      if (form && statusEl) {
-        form.addEventListener('submit', async function (event) {
-          event.preventDefault();
-
-          statusEl.textContent = 'Sending your enquiry...';
-          statusEl.style.color = '#2a2e33';
-
-          const name = document.getElementById('name').value.trim();
-          const email = document.getElementById('email').value.trim();
-          const message = document.getElementById('message').value.trim();
-
-          if (!name || !email || !message) {
-            statusEl.textContent = '❌ Please complete all required fields.';
-            statusEl.style.color = '#c74545';
-            return;
-          }
-
-          const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          if (!emailPattern.test(email)) {
-            statusEl.textContent = '❌ Please enter a valid email address.';
-            statusEl.style.color = '#c74545';
-            return;
-          }
-
-          const formData = new FormData(form);
-
-          try {
-            const response = await fetch('/api/quote', {
-              method: 'POST',
-              body: formData
-            });
-
-            const result = await response.json();
-
-            if (!response.ok || !result.success) {
-              throw new Error(result.message || 'Unable to send your enquiry.');
-            }
-
-            statusEl.textContent = '✓ ' + result.message;
-            statusEl.style.color = '#2d7a3a';
-
-            setTimeout(() => {
-              form.reset();
-              statusEl.textContent = '';
-            }, 2000);
-          } catch (error) {
-            console.error(error);
-            statusEl.textContent = '❌ ' + (error.message || 'Something went wrong. Please try again.');
-            statusEl.style.color = '#c74545';
-          }
+      if (emailInput && replyToInput) {
+        emailInput.addEventListener('input', function () {
+          replyToInput.value = emailInput.value;
         });
       }
     </script>
